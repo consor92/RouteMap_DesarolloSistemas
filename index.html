@@ -1,3 +1,2295 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Completo - Desarrollo de Sistemas Web para Institución Educativa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            margin: -20px -20px 40px -20px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .toc-section {
+            margin-bottom: 25px;
+        }
+        
+        .toc-section h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            list-style: none;
+        }
+        
+        .toc-list li {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            transition: transform 0.2s;
+        }
+        
+        .toc-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .module {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 5px solid #667eea;
+            transition: transform 0.2s;
+        }
+        
+        .module:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .module.analysis {
+            border-top-color: #e74c3c;
+        }
+        
+        .module.development {
+            border-top-color: #3498db;
+        }
+        
+        .module.management {
+            border-top-color: #f39c12;
+        }
+        
+        .module.advanced {
+            border-top-color: #9b59b6;
+        }
+        
+        .module h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .module-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .analysis .module-icon { background: #e74c3c; }
+        .development .module-icon { background: #3498db; }
+        .management .module-icon { background: #f39c12; }
+        .advanced .module-icon { background: #9b59b6; }
+        
+        .module h3 {
+            color: #34495e;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        
+        .concepts, .tools {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .resources {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .practice {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .evaluation {
+            background: linear-gradient(135deg, #fff3e0 0%, #fce4ec 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .rubric {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .rubric-table th,
+        .rubric-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .rubric-table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .rubric-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+        }
+        
+        .progress-indicator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0 5px;
+            background: #e9ecef;
+            transition: all 0.3s;
+        }
+        
+        .progress-step.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .module {
+                padding: 20px;
+            }
+            
+            .progress-indicator {
+                flex-direction: column;
+            }
+            
+            .progress-step {
+                margin: 5px 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Roadmap Completo</h1>
+            <p>Desarrollo de Sistemas Web para Institución Educativa</p>
+            <p><strong>Objetivo:</strong> Crear un sistema web completo con frontend, backend administrativo, documentación y deploy</p>
+        </div>
 
-</html>
+        <div class="toc">
+            <h2>📋 Índice de Contenidos</h2>
+            
+            <div class="toc-section">
+                <h3>🔍 PARTE I: FUNDAMENTOS Y ANÁLISIS</h3>
+                <ul class="toc-list">
+                    <li>1. Introducción al Desarrollo de Sistemas</li>
+                    <li>2. Técnicas de Relevamiento de Datos</li>
+                    <li>3. HTML/CSS Básico y Wireframes</li>
+                    <li>4. Análisis Funcional y Requisitos</li>
+                    <li>5. JavaScript Básico y Validaciones</li>
+                    <li>6. Diagramas de Casos de Uso</li>
+                    <li>7. PHP/MySQL Fundamentos</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h3>🎨 PARTE II: DISEÑO Y PLANIFICACIÓN</h3>
+                <ul class="toc-list">
+                    <li>8. SQL Avanzado y DER</li>
+                    <li>9. Diagramas de Secuencia y Colaboración</li>
+                    <li>10. Prototipado con Figma</li>
+                    <li>11. Planificación - Gantt y PERT</li>
+                    <li>12. Bootstrap y Diseño Responsive</li>
+                    <li>13. Metodologías Ágiles - Scrum</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h3>⚙️ PARTE III: DESARROLLO E IMPLEMENTACIÓN</h3>
+                <ul class="toc-list">
+                    <li>14. Git y Control de Versiones</li>
+                    <li>15. PHP Avanzado y CRUD Completo</li>
+                    <li>16. Sistema de Roles y Permisos</li>
+                    <li>17. Seguridad Aplicada</li>
+                    <li>18. Testing y QA - Caja Negra</li>
+                    <li>19. Panel de Administración Backend</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h3>🚀 PARTE IV: GESTIÓN Y ENTREGA</h3>
+                <ul class="toc-list">
+                    <li>20. Documentación Técnica Completa</li>
+                    <li>21. Presupuesto, Viabilidad y FODA</li>
+                    <li>22. Introducción a DevOps - Docker</li>
+                    <li>23. Deploy y Puesta en Producción</li>
+                    <li>24. Presentación y Manual de Usuario</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PARTE I: FUNDAMENTOS Y ANÁLISIS -->
+        
+        <div class="module analysis">
+            <h2><span class="module-icon">1</span>Introducción al Desarrollo de Sistemas</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es un sistema de información?</li>
+                    <li>Ciclo de vida del desarrollo de software (SDLC)</li>
+                    <li>Diferencia entre análisis, diseño, desarrollo y mantenimiento</li>
+                    <li>Roles en un equipo de desarrollo</li>
+                    <li>Metodologías tradicionales vs ágiles</li>
+                    <li>Arquitectura cliente-servidor</li>
+                    <li>Frontend vs Backend</li>
+                </ul>
+            </div>
+            
+            <div class="tools">
+                <h3>🛠️ Herramientas a Instalar</h3>
+                <ul>
+                    <li><strong>Visual Studio Code:</strong> <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+                    <li><strong>XAMPP:</strong> <a href="https://www.apachefriends.org/es/index.html">https://www.apachefriends.org/es/index.html</a></li>
+                    <li><strong>Git:</strong> <a href="https://git-scm.com/">https://git-scm.com/</a></li>
+                    <li><strong>GitHub Desktop:</strong> <a href="https://desktop.github.com/">https://desktop.github.com/</a></li>
+                    <li><strong>Figma:</strong> <a href="https://www.figma.com/">https://www.figma.com/</a> (cuenta gratuita)</li>
+                    <li><strong>Lucidchart:</strong> <a href="https://www.lucidchart.com/">https://www.lucidchart.com/</a> (cuenta educativa)</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li>Ingeniería de Software - Ian Sommerville (Capítulos 1-3)</li>
+                    <li>Análisis y Diseño de Sistemas - Kendall & Kendall</li>
+                    <li><a href="https://www.youtube.com/watch?v=ZYjTQ6GJpgU">Introducción a los Sistemas de Información - YouTube</a></li>
+                    <li><a href="https://desarrolloweb.com/articulos/que-es-desarrollo-web.html">¿Qué es el desarrollo web? - DesarrolloWeb</a></li>
+                    <li><a href="https://platzi.com/blog/que-es-frontend-y-backend/">Frontend vs Backend - Platzi</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Investigación:</strong> Investigar 3 sistemas web de instituciones educativas y analizar sus funcionalidades principales</li>
+                    <li><strong>Instalación:</strong> Instalar y configurar todas las herramientas necesarias</li>
+                    <li><strong>Análisis inicial:</strong> Definir el alcance del proyecto final (¿qué funcionalidades tendrá nuestro sistema?)</li>
+                    <li><strong>Roles del equipo:</strong> Si trabajan en grupo, definir roles (Analista, Desarrollador Frontend, Backend, Tester, etc.)</li>
+                </ol>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Investigación y Análisis Inicial</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Investigación</td>
+                            <td>Analiza 3+ sistemas con detalle profundo</td>
+                            <td>Analiza 3 sistemas con buen detalle</td>
+                            <td>Analiza 2-3 sistemas básicamente</td>
+                            <td>Análisis superficial o incompleto</td>
+                        </tr>
+                        <tr>
+                            <td>Instalación</td>
+                            <td>Todas las herramientas funcionando perfectamente</td>
+                            <td>Herramientas instaladas con configuración básica</td>
+                            <td>Algunas herramientas con problemas menores</td>
+                            <td>Instalación incompleta o con errores</td>
+                        </tr>
+                        <tr>
+                            <td>Definición de alcance</td>
+                            <td>Alcance claro, detallado y realista</td>
+                            <td>Alcance bien definido</td>
+                            <td>Alcance básico pero comprensible</td>
+                            <td>Alcance confuso o poco realista</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module analysis">
+            <h2><span class="module-icon">2</span>Técnicas de Relevamiento de Datos</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es el relevamiento de información?</li>
+                    <li>Técnicas de relevamiento: entrevistas, encuestas, observación</li>
+                    <li>Diseño de encuestas efectivas</li>
+                    <li>Análisis de datos cualitativos y cuantitativos</li>
+                    <li>Identificación de stakeholders</li>
+                    <li>Documentación del relevamiento</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=fVfVBqbYOPE">Técnicas de Relevamiento - YouTube</a></li>
+                    <li><a href="https://docs.google.com/forms/">Google Forms</a> - Para crear encuestas</li>
+                    <li><a href="https://www.surveymonkey.com/mp/survey-guidelines/">Guía para crear encuestas - SurveyMonkey</a></li>
+                    <li>Análisis y Diseño de Sistemas - Kendall & Kendall (Capítulo 4)</li>
+                    <li><a href="https://www.questionpro.com/blog/es/tipos-de-preguntas-para-encuestas/">Tipos de preguntas para encuestas</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Identificar stakeholders:</strong> Listar todos los usuarios potenciales del sistema (directivos, profesores, alumnos, padres, administrativos)</li>
+                    <li><strong>Diseñar encuesta:</strong> Crear una encuesta con Google Forms para cada tipo de usuario</li>
+                    <li><strong>Realizar entrevistas:</strong> Entrevistar al menos 2 personas de cada rol</li>
+                    <li><strong>Observación:</strong> Observar cómo se maneja actualmente la información en la institución</li>
+                    <li><strong>Análisis de resultados:</strong> Procesar y analizar la información recolectada</li>
+                </ol>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Relevamiento de Datos</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Diseño de encuestas</td>
+                            <td>Preguntas claras, variadas y bien estructuradas</td>
+                            <td>Preguntas apropiadas y bien organizadas</td>
+                            <td>Preguntas básicas pero funcionales</td>
+                            <td>Preguntas confusas o inadecuadas</td>
+                        </tr>
+                        <tr>
+                            <td>Recolección de datos</td>
+                            <td>Datos completos de múltiples fuentes</td>
+                            <td>Datos suficientes y variados</td>
+                            <td>Datos básicos pero útiles</td>
+                            <td>Datos insuficientes o poco confiables</td>
+                        </tr>
+                        <tr>
+                            <td>Análisis</td>
+                            <td>Análisis profundo con conclusiones claras</td>
+                            <td>Análisis adecuado con buenas conclusiones</td>
+                            <td>Análisis básico pero comprensible</td>
+                            <td>Análisis superficial o confuso</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">3</span>HTML/CSS Básico y Wireframes</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>Estructura básica de HTML5</li>
+                    <li>Etiquetas semánticas (header, nav, main, section, article, footer)</li>
+                    <li>Formularios HTML</li>
+                    <li>CSS básico: selectores, propiedades, valores</li>
+                    <li>Box model</li>
+                    <li>Flexbox básico</li>
+                    <li>¿Qué son los wireframes?</li>
+                    <li>Wireframes de baja y alta fidelidad</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/HTML">MDN - HTML en Español</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/CSS">MDN - CSS en Español</a></li>
+                    <li><a href="https://www.freecodecamp.org/espanol/learn/responsive-web-design/">freeCodeCamp - Diseño Web Responsivo</a></li>
+                    <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS-Tricks - Guía Flexbox</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=rr2H086z16s">Curso HTML y CSS - Píldoras Informáticas</a></li>
+                    <li><a href="https://balsamiq.com/learn/articles/what-are-wireframes/">¿Qué son los wireframes? - Balsamiq</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Wireframes en papel:</strong> Dibujar wireframes de las páginas principales basándose en el relevamiento</li>
+                    <li><strong>Estructura HTML:</strong> Crear la estructura HTML básica de la página principal</li>
+                    <li><strong>Navegación:</strong> Implementar un menú de navegación básico</li>
+                    <li><strong>Formulario de contacto:</strong> Crear un formulario HTML básico</li>
+                    <li><strong>Estilos básicos:</strong> Aplicar CSS para que se vea presentable</li>
+                    <li><strong>Aplicar relevamiento:</strong> Incorporar la información obtenida en el módulo anterior</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>💡 Conexión con el Relevamiento:</strong> Usar la información recolectada para decidir qué secciones incluir en la página principal, qué información es más importante para cada tipo de usuario, y cómo organizar el contenido.
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - HTML/CSS y Wireframes</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Wireframes</td>
+                            <td>Wireframes detallados y bien pensados</td>
+                            <td>Wireframes claros y funcionales</td>
+                            <td>Wireframes básicos pero comprensibles</td>
+                            <td>Wireframes confusos o incompletos</td>
+                        </tr>
+                        <tr>
+                            <td>HTML</td>
+                            <td>Código semántico, bien estructurado y válido</td>
+                            <td>Código bien estructurado con buenas prácticas</td>
+                            <td>Código funcional con estructura básica</td>
+                            <td>Código desorganizado o con errores</td>
+                        </tr>
+                        <tr>
+                            <td>CSS</td>
+                            <td>Estilos organizados, reutilizables y atractivos</td>
+                            <td>Estilos bien aplicados y organizados</td>
+                            <td>Estilos básicos pero funcionales</td>
+                            <td>Estilos desorganizados o poco efectivos</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module analysis">
+            <h2><span class="module-icon">4</span>Análisis Funcional y Requisitos</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué son los requisitos funcionales?</li>
+                    <li>¿Qué son los requisitos no funcionales?</li>
+                    <li>Técnicas para identificar requisitos</li>
+                    <li>Priorización de requisitos (MoSCoW)</li>
+                    <li>Listado de funcionalidades</li>
+                    <li>Especificación de requisitos</li>
+                    <li>Trazabilidad de requisitos</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=Kf8A4W9n4bM">Requisitos Funcionales vs No Funcionales - YouTube</a></li>
+                    <li>Ingeniería de Software - Sommerville (Capítulos 4-5)</li>
+                    <li><a href="https://www.atlassian.com/es/agile/project-management/requirements">Gestión de Requisitos - Atlassian</a></li>
+                    <li><a href="https://blog.hubspot.es/marketing/metodo-moscow">Método MoSCoW - HubSpot</a></li>
+                    <li><a href="https://www.lucidchart.com/pages/es/que-son-los-requisitos-funcionales">Requisitos Funcionales - Lucidchart</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Análisis del relevamiento:</strong> Revisar la información recolectada e identificar necesidades</li>
+                    <li><strong>Lista de funcionalidades:</strong> Crear una lista completa de todas las funcionalidades del sistema</li>
+                    <li><strong>Requisitos funcionales:</strong> Documentar cada funcionalidad como requisito funcional</li>
+                    <li><strong>Requisitos no funcionales:</strong> Identificar requisitos de rendimiento, seguridad, usabilidad, etc.</li>
+                    <li><strong>Priorización MoSCoW:</strong> Clasificar requisitos en Must have, Should have, Could have, Won't have</li>
+                    <li><strong>Documento de requisitos:</strong> Crear documento formal con todos los requisitos</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🎯 Ejemplo de Requisitos para Sistema Educativo:</strong>
+                <ul>
+                    <li><strong>RF001:</strong> El sistema debe permitir el registro de nuevos estudiantes</li>
+                    <li><strong>RF002:</strong> El sistema debe mostrar información institucional en la página principal</li>
+                    <li><strong>RNF001:</strong> El sistema debe cargar en menos de 3 segundos</li>
+                    <li><strong>RNF002:</strong> El sistema debe ser responsive para móviles</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Análisis de Requisitos</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Identificación</td>
+                            <td>Requisitos completos y bien identificados</td>
+                            <td>Mayoría de requisitos identificados</td>
+                            <td>Requisitos básicos identificados</td>
+                            <td>Requisitos incompletos o confusos</td>
+                        </tr>
+                        <tr>
+                            <td>Especificación</td>
+                            <td>Requisitos claros, medibles y verificables</td>
+                            <td>Requisitos bien especificados</td>
+                            <td>Especificación básica pero comprensible</td>
+                            <td>Especificación ambigua o incompleta</td>
+                        </tr>
+                        <tr>
+                            <td>Priorización</td>
+                            <td>Priorización lógica y bien justificada</td>
+                            <td>Priorización adecuada</td>
+                            <td>Priorización básica</td>
+                            <td>Priorización confusa o sin justificar</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">5</span>JavaScript Básico y Validaciones</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>Sintaxis básica de JavaScript</li>
+                    <li>Variables (let, const, var)</li>
+                    <li>Tipos de datos</li>
+                    <li>Funciones</li>
+                    <li>Condicionales y bucles</li>
+                    <li>DOM (Document Object Model)</li>
+                    <li>Eventos (click, submit, change)</li>
+                    <li>Validación de formularios</li>
+                    <li>Manipulación de elementos HTML</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Guide">MDN - Guía JavaScript</a></li>
+                    <li><a href="https://es.javascript.info/">JavaScript.info en Español</a></li>
+                    <li><a href="https://www.freecodecamp.org/espanol/learn/javascript-algorithms-and-data-structures/">freeCodeCamp - JavaScript</a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PLU8oAlHdN5BmpobVmj1IlneKlVLJ84TID">Curso JavaScript - Píldoras Informáticas</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Learn/Forms/Form_validation">Validación de Formularios - MDN</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Validación del formulario de contacto:</strong> Agregar validaciones JavaScript al formulario creado anteriormente</li>
+                    <li><strong>Menú interactivo:</strong> Crear un menú que se despliegue en dispositivos móviles</li>
+                    <li><strong>Galería de imágenes:</strong> Implementar una galería simple para mostrar fotos de la institución</li>
+                    <li><strong>Calculadora de notas:</strong> Crear una pequeña calculadora para promedios (aplicando los requisitos identificados)</li>
+                    <li><strong>Mensajes dinámicos:</strong> Mostrar mensajes de éxito/error según las acciones del usuario</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🔗 Aplicando Requisitos:</strong> Implementar las validaciones y funcionalidades interactivas que se identificaron en el análisis de requisitos. Por ejemplo, si se identificó que el formulario debe validar emails, implementar esa validación.
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - JavaScript y Validaciones</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Sintaxis y estructura</td>
+                            <td>Código limpio, bien estructurado y comentado</td>
+                            <td>Código bien organizado con buenas prácticas</td>
+                            <td>Código funcional con estructura básica</td>
+                            <td>Código desorganizado o con errores</td>
+                        </tr>
+                        <tr>
+                            <td>Validaciones</td>
+                            <td>Validaciones completas y efectivas</td>
+                            <td>Validaciones adecuadas y funcionales</td>
+                            <td>Validaciones básicas pero útiles</td>
+                            <td>Validaciones incompletas o defectuosas</td>
+                        </tr>
+                        <tr>
+                            <td>Interactividad</td>
+                            <td>Interacciones fluidas y bien implementadas</td>
+                            <td>Buena interactividad del usuario</td>
+                            <td>Interactividad básica pero funcional</td>
+                            <td>Interactividad limitada o problemática</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module analysis">
+            <h2><span class="module-icon">6</span>Diagramas de Casos de Uso</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué son los casos de uso?</li>
+                    <li>Actores del sistema</li>
+                    <li>Relaciones entre actores y casos de uso</li>
+                    <li>Casos de uso principales y secundarios</li>
+                    <li>Extensiones e inclusiones</li>
+                    <li>Especificación detallada de casos de uso</li>
+                    <li>Herramientas para crear diagramas UML</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.lucidchart.com/pages/es/tutorial-de-diagrama-de-casos-de-uso-uml">Tutorial Casos de Uso - Lucidchart</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=4emxjxonNRI">Diagramas de Casos de Uso - YouTube</a></li>
+                    <li><a href="https://app.diagrams.net/">Draw.io</a> - Herramienta gratuita para diagramas</li>
+                    <li><a href="https://plantuml.com/es/use-case-diagram">PlantUML - Casos de Uso</a></li>
+                    <li>UML Distilled - Martin Fowler (Capítulo sobre Casos de Uso)</li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Identificar actores:</strong> Basándose en el relevamiento, identificar todos los actores del sistema</li>
+                    <li><strong>Listar casos de uso:</strong> Crear lista de casos de uso principales</li>
+                    <li><strong>Diagrama general:</strong> Crear diagrama de casos de uso completo en Lucidchart</li>
+                    <li><strong>Especificación detallada:</strong> Escribir especificación detallada de 5 casos de uso principales</li>
+                    <li><strong>Validación:</strong> Revisar que los casos de uso cubran todos los requisitos funcionales</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>👥 Actores Típicos en Sistema Educativo:</strong>
+                <ul>
+                    <li><strong>Administrador:</strong> Gestiona todo el sistema</li>
+                    <li><strong>Director/Coordinador:</strong> Supervisa y aprueba contenido</li>
+                    <li><strong>Profesor:</strong> Gestiona información de sus materias</li>
+                    <li><strong>Estudiante:</strong> Consulta información</li>
+                    <li><strong>Padre/Tutor:</strong> Consulta información de sus hijos</li>
+                    <li><strong>Visitante:</strong> Consulta información pública</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Diagramas de Casos de Uso</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Identificación de actores</td>
+                            <td>Todos los actores identificados correctamente</td>
+                            <td>Mayoría de actores identificados</td>
+                            <td>Actores principales identificados</td>
+                            <td>Actores incompletos o incorrectos</td>
+                        </tr>
+                        <tr>
+                            <td>Casos de uso</td>
+                            <td>Casos de uso completos y bien definidos</td>
+                            <td>Casos de uso adecuados y claros</td>
+                            <td>Casos de uso básicos pero funcionales</td>
+                            <td>Casos de uso confusos o incompletos</td>
+                        </tr>
+                        <tr>
+                            <td>Diagrama UML</td>
+                            <td>Diagrama correcto según estándares UML</td>
+                            <td>Diagrama bien estructurado</td>
+                            <td>Diagrama básico pero comprensible</td>
+                            <td>Diagrama incorrecto o confuso</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">7</span>PHP/MySQL Fundamentos</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es PHP y para qué sirve?</li>
+                    <li>Sintaxis básica de PHP</li>
+                    <li>Variables y tipos de datos en PHP</li>
+                    <li>Estructuras de control (if, for, while)</li>
+                    <li>Funciones en PHP</li>
+                    <li>Manejo de formularios ($_GET, $_POST)</li>
+                    <li>Introducción a MySQL</li>
+                    <li>phpMyAdmin</li>
+                    <li>Conexión PHP-MySQL</li>
+                    <li>Consultas básicas (SELECT, INSERT)</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.php.net/manual/es/">Manual Oficial PHP en Español</a></li>
+                    <li><a href="https://www.w3schools.com/php/">W3Schools - PHP Tutorial</a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PLU8oAlHdN5BkinrODGXToK9oPAlnJxmW_">Curso PHP y MySQL - Píldoras Informáticas</a></li>
+                    <li><a href="https://dev.mysql.com/doc/refman/8.0/es/">Manual MySQL en Español</a></li>
+                    <li><a href="https://www.aprenderaprogramar.com/index.php?option=com_content&view=category&id=70&Itemid=193">Curso PHP - AprendeAProgramar</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Configurar XAMPP:</strong> Instalar y configurar Apache, MySQL y PHP</li>
+                    <li><strong>Primer script PHP:</strong> Crear "Hola Mundo" y variables básicas</li>
+                    <li><strong>Formulario PHP:</strong> Procesar el formulario de contacto con PHP</li>
+                    <li><strong>Base de datos:</strong> Crear base de datos "institucion_educativa" en phpMyAdmin</li>
+                    <li><strong>Primera tabla:</strong> Crear tabla "contactos" y insertar datos del formulario</li>
+                    <li><strong>Mostrar datos:</strong> Crear página que muestre los contactos guardados</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🗄️ Estructura de BD Inicial:</strong>
+                <pre>
+CREATE DATABASE institucion_educativa;
+USE institucion_educativa;
+
+CREATE TABLE contactos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    mensaje TEXT,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+                </pre>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - PHP/MySQL Básico</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Configuración</td>
+                            <td>XAMPP configurado perfectamente</td>
+                            <td>XAMPP funcionando correctamente</td>
+                            <td>XAMPP con configuración básica</td>
+                            <td>Problemas de configuración</td>
+                        </tr>
+                        <tr>
+                            <td>Código PHP</td>
+                            <td>Código limpio, comentado y eficiente</td>
+                            <td>Código bien estructurado</td>
+                            <td>Código funcional básico</td>
+                            <td>Código con errores o mal estructurado</td>
+                        </tr>
+                        <tr>
+                            <td>Base de datos</td>
+                            <td>BD bien diseñada con buenas prácticas</td>
+                            <td>BD funcional y bien estructurada</td>
+                            <td>BD básica pero funcional</td>
+                            <td>BD mal diseñada o con errores</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTE II: DISEÑO Y PLANIFICACIÓN -->
+
+        <div class="module development">
+            <h2><span class="module-icon">8</span>SQL Avanzado y DER</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>Repaso de SQL básico (SELECT, INSERT, UPDATE, DELETE)</li>
+                    <li>JOINs (INNER, LEFT, RIGHT, FULL)</li>
+                    <li>Subconsultas</li>
+                    <li>Funciones de agregación (COUNT, SUM, AVG, MAX, MIN)</li>
+                    <li>GROUP BY y HAVING</li>
+                    <li>Índices y optimización</li>
+                    <li>¿Qué es un DER (Diagrama Entidad-Relación)?</li>
+                    <li>Entidades, atributos y relaciones</li>
+                    <li>Cardinalidad (1:1, 1:N, N:M)</li>
+                    <li>Normalización de bases de datos</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.w3schools.com/sql/">W3Schools - SQL Tutorial</a></li>
+                    <li><a href="https://sqlbolt.com/lesson/select_queries_introduction">SQLBolt - Tutorial Interactivo</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=uUdKAYl-F7g">SQL desde Cero - YouTube</a></li>
+                    <li><a href="https://www.lucidchart.com/pages/es/que-es-un-diagrama-entidad-relacion">¿Qué es un DER? - Lucidchart</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=UI6lqHOVHic">Diagramas Entidad-Relación - YouTube</a></li>
+                    <li><a href="https://app.diagrams.net/">Draw.io</a> para crear DER</li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Diseñar DER completo:</strong> Crear DER para todo el sistema educativo (usuarios, cursos, materias, notas, etc.)</li>
+                    <li><strong>Normalización:</strong> Aplicar reglas de normalización al diseño</li>
+                    <li><strong>Crear tablas:</strong> Implementar el DER en MySQL con todas las tablas</li>
+                    <li><strong>Datos de prueba:</strong> Insertar datos de ejemplo en todas las tablas</li>
+                    <li><strong>Consultas complejas:</strong> Crear consultas con JOINs para obtener información relacionada</li>
+                    <li><strong>Reportes:</strong> Crear consultas para generar reportes (ej: estudiantes por curso)</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🗄️ Entidades Principales del Sistema:</strong>
+                <ul>
+                    <li><strong>Usuarios:</strong> (id, nombre, email, rol, password)</li>
+                    <li><strong>Estudiantes:</strong> (id, usuario_id, legajo, fecha_nacimiento)</li>
+                    <li><strong>Profesores:</strong> (id, usuario_id, especialidad)</li>
+                    <li><strong>Cursos:</strong> (id, nombre, año, division)</li>
+                    <li><strong>Materias:</strong> (id, nombre, curso_id, profesor_id)</li>
+                    <li><strong>Noticias:</strong> (id, titulo, contenido, fecha, autor_id)</li>
+                    <li><strong>Configuracion_sitio:</strong> (id, clave, valor)</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - SQL Avanzado y DER</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Diseño DER</td>
+                            <td>DER completo, normalizado y bien diseñado</td>
+                            <td>DER funcional con buena estructura</td>
+                            <td>DER básico pero comprensible</td>
+                            <td>DER incompleto o mal diseñado</td>
+                        </tr>
+                        <tr>
+                            <td>Implementación SQL</td>
+                            <td>Tablas bien creadas con restricciones apropiadas</td>
+                            <td>Tablas correctamente implementadas</td>
+                            <td>Implementación básica funcional</td>
+                            <td>Errores en la implementación</td>
+                        </tr>
+                        <tr>
+                            <td>Consultas</td>
+                            <td>Consultas complejas y optimizadas</td>
+                            <td>Consultas correctas y eficientes</td>
+                            <td>Consultas básicas pero funcionales</td>
+                            <td>Consultas incorrectas o ineficientes</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module analysis">
+            <h2><span class="module-icon">9</span>Diagramas de Secuencia y Colaboración</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué son los diagramas de secuencia?</li>
+                    <li>Actores, objetos y líneas de vida</li>
+                    <li>Mensajes síncronos y asíncronos</li>
+                    <li>Activaciones y retornos</li>
+                    <li>¿Qué son los diagramas de colaboración?</li>
+                    <li>Diferencias entre secuencia y colaboración</li>
+                    <li>Cuándo usar cada tipo de diagrama</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.lucidchart.com/pages/es/tutorial-de-diagrama-de-secuencia-uml">Tutorial Diagramas de Secuencia - Lucidchart</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=pCK6prSq8aw">Diagramas de Secuencia UML - YouTube</a></li>
+                    <li><a href="https://plantuml.com/es/sequence-diagram">PlantUML - Diagramas de Secuencia</a></li>
+                    <li><a href="https://app.diagrams.net/">Draw.io</a> para crear diagramas</li>
+                    <li>UML Distilled - Martin Fowler (Capítulos sobre diagramas dinámicos)</li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Seleccionar casos de uso:</strong> Elegir 3 casos de uso principales para diagramar</li>
+                    <li><strong>Diagrama de secuencia - Login:</strong> Crear diagrama del proceso de autenticación</li>
+                    <li><strong>Diagrama de secuencia - Registro:</strong> Diagramar el proceso de registro de estudiante</li>
+                    <li><strong>Diagrama de colaboración:</strong> Crear diagrama de colaboración para gestión de noticias</li>
+                    <li><strong>Validación:</strong> Verificar que los diagramas reflejen correctamente los casos de uso</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>📋 Ejemplo - Secuencia de Login:</strong>
+                <ol>
+                    <li>Usuario ingresa credenciales</li>
+                    <li>Sistema valida formato</li>
+                    <li>Sistema consulta base de datos</li>
+                    <li>Base de datos retorna resultado</li>
+                    <li>Sistema crea sesión (si es válido)</li>
+                    <li>Sistema redirige al dashboard</li>
+                </ol>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Diagramas de Secuencia y Colaboración</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Notación UML</td>
+                            <td>Notación UML perfecta y estándar</td>
+                            <td>Notación correcta con mínimos errores</td>
+                            <td>Notación básica pero comprensible</td>
+                            <td>Notación incorrecta o confusa</td>
+                        </tr>
+                        <tr>
+                            <td>Completitud</td>
+                            <td>Diagramas completos con todos los elementos</td>
+                            <td>Diagramas bien desarrollados</td>
+                            <td>Diagramas básicos pero funcionales</td>
+                            <td>Diagramas incompletos</td>
+                        </tr>
+                        <tr>
+                            <td>Coherencia</td>
+                            <td>Perfecta coherencia con casos de uso</td>
+                            <td>Buena coherencia con el diseño</td>
+                            <td>Coherencia básica</td>
+                            <td>Incoherencias o contradicciones</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">10</span>Prototipado con Figma</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es el prototipado?</li>
+                    <li>Diferencia entre wireframes, mockups y prototipos</li>
+                    <li>Introducción a Figma</li>
+                    <li>Herramientas básicas de Figma</li>
+                    <li>Componentes y estilos</li>
+                    <li>Prototipado interactivo</li>
+                    <li>Principios de diseño UI/UX</li>
+                    <li>Diseño responsive en Figma</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.figma.com/resources/learn-design/">Figma - Learn Design</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=FTFaQWZBqQ8">Curso Figma desde Cero - YouTube</a></li>
+                    <li><a href="https://help.figma.com/hc/es">Centro de Ayuda Figma en Español</a></li>
+                    <li><a href="https://www.figma.com/community/">Figma Community</a> - Plantillas y recursos</li>
+                    <li><a href="https://material.io/design">Material Design - Google</a></li>
+                    <li><a href="https://www.interaction-design.org/literature/topics/ui-design">Principios de Diseño UI - Interaction Design</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Crear cuenta Figma:</strong> Registrarse y familiarizarse con la interfaz</li>
+                    <li><strong>Wireframes digitales:</strong> Recrear los wireframes en papel usando Figma</li>
+                    <li><strong>Mockups de alta fidelidad:</strong> Diseñar todas las páginas principales con colores, tipografías y elementos finales</li>
+                    <li><strong>Sistema de componentes:</strong> Crear componentes reutilizables (botones, formularios, cards)</li>
+                    <li><strong>Prototipo interactivo:</strong> Conectar las páginas con navegación funcional</li>
+                    <li><strong>Versión móvil:</strong> Adaptar el diseño para dispositivos móviles</li>
+                    <li><strong>Presentación:</strong> Preparar presentación del prototipo para validación</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🎨 Páginas a Prototipar:</strong>
+                <ul>
+                    <li><strong>Página Principal:</strong> Hero, noticias, información institucional</li>
+                    <li><strong>Nosotros:</strong> Historia, misión, visión, autoridades</li>
+                    <li><strong>Carreras/Cursos:</strong> Información académica</li>
+                    <li><strong>Noticias:</strong> Lista y detalle de noticias</li>
+                    <li><strong>Contacto:</strong> Formulario y datos de contacto</li>
+                    <li><strong>Login:</strong> Acceso al sistema</li>
+                    <li><strong>Dashboard Admin:</strong> Panel de administración</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Prototipado con Figma</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Diseño visual</td>
+                            <td>Diseño atractivo, profesional y coherente</td>
+                            <td>Buen diseño con identidad visual clara</td>
+                            <td>Diseño básico pero funcional</td>
+                            <td>Diseño poco atractivo o inconsistente</td>
+                        </tr>
+                        <tr>
+                            <td>Usabilidad</td>
+                            <td>Navegación intuitiva y experiencia excelente</td>
+                            <td>Buena usabilidad y navegación clara</td>
+                            <td>Usabilidad básica pero funcional</td>
+                            <td>Problemas de usabilidad evidentes</td>
+                        </tr>
+                        <tr>
+                            <td>Completitud</td>
+                            <td>Todas las páginas y estados diseñados</td>
+                            <td>Páginas principales completas</td>
+                            <td>Páginas básicas diseñadas</td>
+                            <td>Prototipo incompleto</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module management">
+            <h2><span class="module-icon">11</span>Planificación - Gantt y PERT</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es la planificación de proyectos?</li>
+                    <li>Diagrama de Gantt: definición y componentes</li>
+                    <li>Tareas, duraciones y dependencias</li>
+                    <li>Ruta crítica</li>
+                    <li>Diagrama PERT (Program Evaluation and Review Technique)</li>
+                    <li>Estimación de tiempos (optimista, pesimista, más probable)</li>
+                    <li>Gestión de recursos</li>
+                    <li>Seguimiento y control de proyectos</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.lucidchart.com/pages/es/que-es-un-diagrama-de-gantt">¿Qué es un Diagrama de Gantt? - Lucidchart</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=yOzIPWFMhYs">Diagramas de Gantt - YouTube</a></li>
+                    <li><a href="https://www.atlassian.com/es/agile/project-management/gantt-chart">Diagramas de Gantt - Atlassian</a></li>
+                    <li><a href="https://www.projectmanager.com/es/gantt-chart">Guía Completa Gantt - ProjectManager</a></li>
+                    <li><a href="https://www.smartsheet.com/es/what-pert-chart">¿Qué es PERT? - Smartsheet</a></li>
+                    <li><a href="https://app.diagrams.net/">Draw.io</a> para crear diagramas</li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Desglose de tareas:</strong> Dividir el proyecto en tareas específicas y medibles</li>
+                    <li><strong>Estimación de tiempos:</strong> Estimar duración de cada tarea</li>
+                    <li><strong>Identificar dependencias:</strong> Determinar qué tareas dependen de otras</li>
+                    <li><strong>Crear Gantt:</strong> Desarrollar diagrama de Gantt completo del proyecto</li>
+                    <li><strong>Diagrama PERT:</strong> Crear diagrama PERT con ruta crítica</li>
+                    <li><strong>Asignación de recursos:</strong> Asignar responsables a cada tarea</li>
+                    <li><strong>Plan de seguimiento:</strong> Definir cómo se hará el seguimiento del progreso</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>📋 Fases Principales del Proyecto:</strong>
+                <ol>
+                    <li><strong>Análisis y Diseño</strong> (3-4 semanas)
+                        <ul>
+                            <li>Relevamiento completo</li>
+                            <li>Análisis de requisitos</li>
+                            <li>Diseño de base de datos</li>
+                            <li>Prototipado</li>
+                        </ul>
+                    </li>
+                    <li><strong>Desarrollo Frontend</strong> (4-5 semanas)
+                        <ul>
+                            <li>Maquetado HTML/CSS</li>
+                            <li>Implementación JavaScript</li>
+                            <li>Integración Bootstrap</li>
+                        </ul>
+                    </li>
+                    <li><strong>Desarrollo Backend</strong> (4-5 semanas)
+                        <ul>
+                            <li>Desarrollo PHP</li>
+                            <li>Sistema de autenticación</li>
+                            <li>CRUD completo</li>
+                            <li>Panel administrativo</li>
+                        </ul>
+                    </li>
+                    <li><strong>Testing y Deploy</strong> (2-3 semanas)
+                        <ul>
+                            <li>Pruebas funcionales</li>
+                            <li>Corrección de errores</li>
+                            <li>Documentación</li>
+                            <li>Deploy</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Planificación de Proyectos</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Desglose de tareas</td>
+                            <td>Tareas detalladas, medibles y realistas</td>
+                            <td>Buen desglose de tareas</td>
+                            <td>Tareas básicas pero comprensibles</td>
+                            <td>Tareas vagas o poco realistas</td>
+                        </tr>
+                        <tr>
+                            <td>Estimación temporal</td>
+                            <td>Estimaciones precisas y bien justificadas</td>
+                            <td>Estimaciones razonables</td>
+                            <td>Estimaciones básicas</td>
+                            <td>Estimaciones poco realistas</td>
+                        </tr>
+                        <tr>
+                            <td>Diagramas</td>
+                            <td>Diagramas completos y profesionales</td>
+                            <td>Diagramas bien estructurados</td>
+                            <td>Diagramas básicos pero funcionales</td>
+                            <td>Diagramas incompletos o confusos</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">12</span>Bootstrap y Diseño Responsive</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es Bootstrap?</li>
+                    <li>Sistema de grillas de Bootstrap</li>
+                    <li>Componentes principales (navbar, cards, forms, buttons)</li>
+                    <li>Clases utilitarias</li>
+                    <li>Responsive design con Bootstrap</li>
+                    <li>Breakpoints y media queries</li>
+                    <li>Personalización de Bootstrap</li>
+                    <li>Integración con proyectos existentes</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Documentación Oficial Bootstrap</a></li>
+                    <li><a href="https://www.w3schools.com/bootstrap5/">W3Schools - Bootstrap 5</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=QqgrjWAPJRE">Curso Bootstrap 5 - YouTube</a></li>
+                    <li><a href="https://bootstrap-cheatsheet.themeselection.com/">Bootstrap Cheat Sheet</a></li>
+                    <li><a href="https://bootswatch.com/">Bootswatch</a> - Temas gratuitos para Bootstrap</li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Instalación:</strong> Integrar Bootstrap 5 en el proyecto existente</li>
+                    <li><strong>Refactorizar HTML:</strong> Convertir el HTML existente para usar Bootstrap</li>
+                    <li><strong>Sistema de grillas:</strong> Implementar layout responsive con el sistema de grillas</li>
+                    <li><strong>Componentes:</strong> Reemplazar elementos custom por componentes Bootstrap</li>
+                    <li><strong>Formularios:</strong> Mejorar formularios con clases Bootstrap</li>
+                    <li><strong>Navegación:</strong> Crear navbar responsive</li>
+                    <li><strong>Personalización:</strong> Customizar colores y estilos según el prototipo de Figma</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🎨 Implementando el Prototipo:</strong> Usar Bootstrap para implementar fielmente el diseño creado en Figma, asegurándose de que sea responsive y mantenga la identidad visual definida.
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Bootstrap y Responsive Design</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Implementación Bootstrap</td>
+                            <td>Uso experto de Bootstrap con buenas prácticas</td>
+                            <td>Buen uso de componentes y sistema de grillas</td>
+                            <td>Uso básico pero funcional</td>
+                            <td>Implementación incorrecta o limitada</td>
+                        </tr>
+                        <tr>
+                            <td>Responsive Design</td>
+                            <td>Perfecta adaptación a todos los dispositivos</td>
+                            <td>Buena adaptación responsive</td>
+                            <td>Adaptación básica funcional</td>
+                            <td>Problemas en dispositivos móviles</td>
+                        </tr>
+                        <tr>
+                            <td>Fidelidad al prototipo</td>
+                            <td>Implementación fiel al diseño de Figma</td>
+                            <td>Buena aproximación al prototipo</td>
+                            <td>Implementación básica del diseño</td>
+                            <td>Diferencias significativas con el prototipo</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module management">
+            <h2><span class="module-icon">13</span>Metodologías Ágiles - Scrum</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué son las metodologías ágiles?</li>
+                    <li>Manifiesto Ágil</li>
+                    <li>Framework Scrum: roles, eventos, artefactos</li>
+                    <li>Product Owner, Scrum Master, Development Team</li>
+                    <li>Sprint, Sprint Planning, Daily Scrum, Sprint Review, Retrospective</li>
+                    <li>Product Backlog, Sprint Backlog, Increment</li>
+                    <li>User Stories y criterios de aceptación</li>
+                    <li>Estimación con Planning Poker</li>
+                    <li>Herramientas para Scrum (Jira, Trello)</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.scrum.org/resources/what-is-scrum">¿Qué es Scrum? - Scrum.org</a></li>
+                    <li><a href="https://agilemanifesto.org/iso/es/manifesto.html">Manifiesto Ágil en Español</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=9TycLR0TqFA">Scrum en 10 minutos - YouTube</a></li>
+                    <li><a href="https://www.atlassian.com/es/agile/scrum">Guía Scrum - Atlassian</a></li>
+                    <li><a href="https://www.atlassian.com/es/software/jira">Jira - Herramienta de gestión</a></li>
+                    <li><a href="https://trello.com/es">Trello</a> - Alternativa simple para gestión</li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Definir roles:</strong> Asignar roles Scrum en el equipo de trabajo</li>
+                    <li><strong>Product Backlog:</strong> Crear backlog completo con User Stories</li>
+                    <li><strong>Estimación:</strong> Estimar User Stories usando Planning Poker</li>
+                    <li><strong>Sprint Planning:</strong> Planificar primer Sprint de 2 semanas</li>
+                    <li><strong>Configurar Jira:</strong> Crear proyecto en Jira y configurar board</li>
+                    <li><strong>Daily Scrum:</strong> Implementar reuniones diarias de seguimiento</li>
+                    <li><strong>Sprint Review:</strong> Realizar demo al final del Sprint</li>
+                    <li><strong>Retrospectiva:</strong> Identificar mejoras para el siguiente Sprint</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>📝 Ejemplo de User Stories:</strong>
+                <ul>
+                    <li><strong>Como</strong> visitante <strong>quiero</strong> ver información de la institución <strong>para</strong> conocer su propuesta educativa</li>
+                    <li><strong>Como</strong> administrador <strong>quiero</strong> gestionar noticias <strong>para</strong> mantener actualizada la información</li>
+                    <li><strong>Como</strong> estudiante <strong>quiero</strong> acceder a mi información académica <strong>para</strong> consultar mis datos</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Metodologías Ágiles</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Comprensión Scrum</td>
+                            <td>Dominio completo de conceptos y aplicación</td>
+                            <td>Buena comprensión y aplicación</td>
+                            <td>Comprensión básica</td>
+                            <td>Comprensión limitada o incorrecta</td>
+                        </tr>
+                        <tr>
+                            <td>User Stories</td>
+                            <td>Stories bien escritas con criterios claros</td>
+                            <td>Stories correctas y comprensibles</td>
+                            <td>Stories básicas pero funcionales</td>
+                            <td>Stories mal definidas o confusas</td>
+                        </tr>
+                        <tr>
+                            <td>Uso de herramientas</td>
+                            <td>Uso experto de Jira/herramientas ágiles</td>
+                            <td>Buen uso de herramientas de gestión</td>
+                            <td>Uso básico pero efectivo</td>
+                            <td>Dificultades con las herramientas</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTE III: DESARROLLO E IMPLEMENTACIÓN -->
+
+        <div class="module development">
+            <h2><span class="module-icon">14</span>Git y Control de Versiones</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es el control de versiones?</li>
+                    <li>Git vs otros sistemas de control</li>
+                    <li>Repositorios locales y remotos</li>
+                    <li>Comandos básicos: init, add, commit, push, pull</li>
+                    <li>Ramas (branches) y merge</li>
+                    <li>Resolución de conflictos</li>
+                    <li>GitHub y GitHub Desktop</li>
+                    <li>Flujo de trabajo con Git</li>
+                    <li>Buenas prácticas para commits</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://git-scm.com/book/es/v2">Pro Git - Libro Oficial en Español</a></li>
+                    <li><a href="https://www.atlassian.com/es/git/tutorials">Tutoriales Git - Atlassian</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=3GymExBkKjE">Git y GitHub desde Cero - YouTube</a></li>
+                    <li><a href="https://learngitbranching.js.org/?locale=es_AR">Learn Git Branching - Interactivo</a></li>
+                    <li><a href="https://desktop.github.com/">GitHub Desktop</a></li>
+                    <li><a href="https://education.github.com/pack">GitHub Student Pack</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Configuración inicial:</strong> Instalar Git y configurar usuario</li>
+                    <li><strong>Crear repositorio:</strong> Inicializar repositorio para el proyecto</li>
+                    <li><strong>Primer commit:</strong> Agregar archivos existentes y hacer commit inicial</li>
+                    <li><strong>GitHub:</strong> Crear repositorio en GitHub y conectar con local</li>
+                    <li><strong>Ramas de trabajo:</strong> Crear ramas para diferentes funcionalidades</li>
+                    <li><strong>Colaboración:</strong> Practicar pull requests y code review</li>
+                    <li><strong>Gitignore:</strong> Configurar archivos a ignorar</li>
+                    <li><strong>Releases:</strong> Crear tags y releases para versiones</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🌿 Estrategia de Ramas Sugerida:</strong>
+                <ul>
+                    <li><strong>main:</strong> Rama principal con código estable</li>
+                    <li><strong>develop:</strong> Rama de desarrollo</li>
+                    <li><strong>feature/nombre:</strong> Ramas para nuevas funcionalidades</li>
+                    <li><strong>hotfix/nombre:</strong> Ramas para correcciones urgentes</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Git y Control de Versiones</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Uso de Git</td>
+                            <td>Dominio completo de comandos y flujos</td>
+                            <td>Buen manejo de Git básico</td>
+                            <td>Uso básico pero funcional</td>
+                            <td>Dificultades con conceptos básicos</td>
+                        </tr>
+                        <tr>
+                            <td>Commits</td>
+                            <td>Commits frecuentes, claros y bien descritos</td>
+                            <td>Buenos commits con mensajes descriptivos</td>
+                            <td>Commits básicos pero comprensibles</td>
+                            <td>Commits poco frecuentes o mal descritos</td>
+                        </tr>
+                        <tr>
+                            <td>Colaboración</td>
+                            <td>Excelente uso de ramas y pull requests</td>
+                            <td>Buen trabajo colaborativo</td>
+                            <td>Colaboración básica efectiva</td>
+                            <td>Dificultades en trabajo colaborativo</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">15</span>PHP Avanzado y CRUD Completo</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>Programación orientada a objetos en PHP</li>
+                    <li>Clases, objetos, herencia, polimorfismo</li>
+                    <li>PDO (PHP Data Objects) para base de datos</li>
+                    <li>Prepared statements y seguridad</li>
+                    <li>Manejo de errores y excepciones</li>
+                    <li>Sesiones y cookies</li>
+                    <li>Subida de archivos</li>
+                    <li>Paginación de resultados</li>
+                    <li>Validación y sanitización de datos</li>
+                    <li>Arquitectura MVC básica</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.php.net/manual/es/language.oop5.php">POO en PHP - Manual Oficial</a></li>
+                    <li><a href="https://www.php.net/manual/es/book.pdo.php">PDO - Manual PHP</a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PLU8oAlHdN5BkinrODGXToK9oPAlnJxmW_">PHP Avanzado - Píldoras Informáticas</a></li>
+                    <li><a href="https://phptherightway.com/pages/Databases.html">PHP The Right Way - Databases</a></li>
+                    <li><a href="https://www.aprenderaprogramar.com/index.php?option=com_content&view=category&id=70&Itemid=193">Curso PHP Avanzado</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Refactorizar conexión:</strong> Migrar de mysqli a PDO</li>
+                    <li><strong>Crear clases:</strong> Implementar clases para Usuario, Estudiante, Noticia</li>
+                    <li><strong>CRUD Usuarios:</strong> Sistema completo de gestión de usuarios</li>
+                    <li><strong>CRUD Estudiantes:</strong> Gestión completa de estudiantes</li>
+                    <li><strong>CRUD Noticias:</strong> Sistema de noticias con imágenes</li>
+                    <li><strong>Sistema de archivos:</strong> Subida y gestión de documentos</li>
+                    <li><strong>Paginación:</strong> Implementar paginación en listados</li>
+                    <li><strong>Búsqueda avanzada:</strong> Filtros y búsqueda en tiempo real</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🏗️ Estructura MVC Básica:</strong>
+                <pre>
+proyecto/
+├── config/
+│   └── database.php
+├── models/
+│   ├── Usuario.php
+│   ├── Estudiante.php
+│   └── Noticia.php
+├── views/
+│   ├── usuarios/
+│   ├── estudiantes/
+│   └── noticias/
+├── controllers/
+│   ├── UsuarioController.php
+│   ├── EstudianteController.php
+│   └── NoticiaController.php
+└── public/
+    ├── index.php
+    ├── css/
+    ├── js/
+    └── uploads/
+                </pre>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - PHP Avanzado y CRUD</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Arquitectura</td>
+                            <td>Código bien estructurado con patrones</td>
+                            <td>Buena organización del código</td>
+                            <td>Estructura básica pero funcional</td>
+                            <td>Código desorganizado</td>
+                        </tr>
+                        <tr>
+                            <td>Funcionalidad CRUD</td>
+                            <td>CRUD completo con todas las validaciones</td>
+                            <td>CRUD funcional con buenas prácticas</td>
+                            <td>CRUD básico pero operativo</td>
+                            <td>CRUD incompleto o con errores</td>
+                        </tr>
+                        <tr>
+                            <td>Seguridad</td>
+                            <td>Implementación completa de seguridad</td>
+                            <td>Buenas prácticas de seguridad</td>
+                            <td>Seguridad básica implementada</td>
+                            <td>Vulnerabilidades evidentes</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">16</span>Sistema de Roles y Permisos</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es un sistema de roles?</li>
+                    <li>RBAC (Role-Based Access Control)</li>
+                    <li>Usuarios, roles y permisos</li>
+                    <li>Autenticación vs Autorización</li>
+                    <li>Middleware de autenticación</li>
+                    <li>Sesiones seguras</li>
+                    <li>Control de acceso a páginas</li>
+                    <li>Interfaces diferenciadas por rol</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=LC9GaXkdxF8">Sistema de Login PHP - YouTube</a></li>
+                    <li><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10</a></li>
+                    <li><a href="https://www.php.net/manual/es/features.sessions.php">Sesiones en PHP - Manual</a></li>
+                    <li><a href="https://auth0.com/blog/role-based-access-control-rbac-and-react-apps/">RBAC Concepts - Auth0</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Diseñar roles:</strong> Definir roles del sistema (Admin, Director, Profesor, Estudiante)</li>
+                    <li><strong>Tabla de permisos:</strong> Crear estructura de BD para roles y permisos</li>
+                    <li><strong>Sistema de login:</strong> Implementar autenticación segura</li>
+                    <li><strong>Middleware:</strong> Crear sistema de verificación de permisos</li>
+                    <li><strong>Dashboards diferenciados:</strong> Crear interfaces según rol</li>
+                    <li><strong>Control de acceso:</strong> Proteger páginas según permisos</li>
+                    <li><strong>Gestión de usuarios:</strong> Panel para asignar roles</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>👥 Roles y Permisos del Sistema:</strong>
+                <ul>
+                    <li><strong>Super Admin:</strong> Control total del sistema</li>
+                    <li><strong>Director:</strong> Gestión de contenido y usuarios</li>
+                    <li><strong>Coordinador:</strong> Gestión de su área específica</li>
+                    <li><strong>Profesor:</strong> Gestión de información de sus materias</li>
+                    <li><strong>Estudiante:</strong> Consulta de información personal</li>
+                    <li><strong>Padre/Tutor:</strong> Consulta información de sus hijos</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Sistema de Roles y Permisos</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Diseño del sistema</td>
+                            <td>Sistema RBAC completo y bien diseñado</td>
+                            <td>Buen diseño de roles y permisos</td>
+                            <td>Sistema básico pero funcional</td>
+                            <td>Diseño confuso o incompleto</td>
+                        </tr>
+                        <tr>
+                            <td>Implementación</td>
+                            <td>Implementación robusta y segura</td>
+                            <td>Buena implementación funcional</td>
+                            <td>Implementación básica operativa</td>
+                            <td>Implementación con fallas</td>
+                        </tr>
+                        <tr>
+                            <td>Seguridad</td>
+                            <td>Seguridad completa sin vulnerabilidades</td>
+                            <td>Buenas prácticas de seguridad</td>
+                            <td>Seguridad básica adecuada</td>
+                            <td>Vulnerabilidades de seguridad</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">17</span>Seguridad Aplicada</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>Principales vulnerabilidades web (OWASP Top 10)</li>
+                    <li>Inyección SQL y prevención</li>
+                    <li>Cross-Site Scripting (XSS)</li>
+                    <li>Cross-Site Request Forgery (CSRF)</li>
+                    <li>Validación y sanitización de datos</li>
+                    <li>Hashing de contraseñas</li>
+                    <li>HTTPS y certificados SSL</li>
+                    <li>Headers de seguridad</li>
+                    <li>Backup y recuperación</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10 - 2021</a></li>
+                    <li><a href="https://www.php.net/manual/es/security.php">Seguridad en PHP - Manual</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=WlmKwIe9z1Q">Seguridad Web - YouTube</a></li>
+                    <li><a href="https://cheatsheetseries.owasp.org/">OWASP Cheat Sheets</a></li>
+                    <li><a href="https://letsencrypt.org/es/">Let's Encrypt - SSL Gratuito</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Auditoría de seguridad:</strong> Revisar código existente buscando vulnerabilidades</li>
+                    <li><strong>Prevención SQL Injection:</strong> Asegurar todas las consultas usen prepared statements</li>
+                    <li><strong>Validación de entrada:</strong> Implementar validación completa de todos los inputs</li>
+                    <li><strong>Sanitización XSS:</strong> Proteger contra ataques XSS</li>
+                    <li><strong>Tokens CSRF:</strong> Implementar protección CSRF en formularios</li>
+                    <li><strong>Hashing contraseñas:</strong> Usar password_hash() y password_verify()</li>
+                    <li><strong>Headers de seguridad:</strong> Configurar headers HTTP seguros</li>
+                    <li><strong>Plan de backup:</strong> Implementar sistema de respaldo</li>
+                </ol>
+            </div>
+            
+            <div class="warning">
+                <strong>⚠️ Importante:</strong> La seguridad no es opcional. Cada funcionalidad debe ser desarrollada considerando los aspectos de seguridad desde el inicio, no como una adición posterior.
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Seguridad Aplicada</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Identificación vulnerabilidades</td>
+                            <td>Identifica y corrige todas las vulnerabilidades</td>
+                            <td>Identifica mayoría de problemas</td>
+                            <td>Identifica vulnerabilidades básicas</td>
+                            <td>No identifica problemas críticos</td>
+                        </tr>
+                        <tr>
+                            <td>Implementación</td>
+                            <td>Implementación completa de medidas</td>
+                            <td>Buena implementación de seguridad</td>
+                            <td>Implementación básica adecuada</td>
+                            <td>Implementación deficiente</td>
+                        </tr>
+                        <tr>
+                            <td>Buenas prácticas</td>
+                            <td>Sigue todas las mejores prácticas</td>
+                            <td>Aplica mayoría de buenas prácticas</td>
+                            <td>Aplica prácticas básicas</td>
+                            <td>No sigue buenas prácticas</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">18</span>Testing y QA - Caja Negra</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es el testing de software?</li>
+                    <li>Testing de caja negra vs caja blanca</li>
+                    <li>Tipos de testing: funcional, usabilidad, rendimiento</li>
+                    <li>Casos de prueba y escenarios</li>
+                    <li>Testing manual vs automatizado</li>
+                    <li>Documentación de bugs</li>
+                    <li>Criterios de aceptación</li>
+                    <li>Testing de regresión</li>
+                    <li>Herramientas de testing</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.guru99.com/software-testing.html">Software Testing Tutorial - Guru99</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=UZy1Dj9JIg4">Testing de Software - YouTube</a></li>
+                    <li><a href="https://www.browserstack.com/guide/black-box-testing">Black Box Testing Guide</a></li>
+                    <li><a href="https://www.atlassian.com/es/continuous-delivery/software-testing/types-of-software-testing">Tipos de Testing - Atlassian</a></li>
+                    <li><a href="https://testlink.org/">TestLink</a> - Herramienta de gestión de casos de prueba</li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Plan de testing:</strong> Crear plan completo de pruebas del sistema</li>
+                    <li><strong>Casos de prueba:</strong> Diseñar casos de prueba para cada funcionalidad</li>
+                    <li><strong>Testing funcional:</strong> Probar todas las funcionalidades del sistema</li>
+                    <li><strong>Testing de usabilidad:</strong> Evaluar la experiencia de usuario</li>
+                    <li><strong>Testing de compatibilidad:</strong> Probar en diferentes navegadores y dispositivos</li>
+                    <li><strong>Documentar bugs:</strong> Crear reporte de errores encontrados</li>
+                    <li><strong>Testing de regresión:</strong> Verificar que las correcciones no rompan otras funcionalidades</li>
+                    <li><strong>Reporte final:</strong> Documento con resultados y recomendaciones</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>🧪 Áreas Críticas a Testear:</strong>
+                <ul>
+                    <li><strong>Autenticación:</strong> Login, logout, recuperación de contraseña</li>
+                    <li><strong>Autorización:</strong> Acceso según roles y permisos</li>
+                    <li><strong>CRUD:</strong> Crear, leer, actualizar, eliminar datos</li>
+                    <li><strong>Formularios:</strong> Validaciones y manejo de errores</li>
+                    <li><strong>Subida de archivos:</strong> Tipos, tamaños, seguridad</li>
+                    <li><strong>Responsive:</strong> Funcionamiento en móviles y tablets</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Testing y QA</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Plan de testing</td>
+                            <td>Plan completo y bien estructurado</td>
+                            <td>Buen plan con cobertura adecuada</td>
+                            <td>Plan básico pero funcional</td>
+                            <td>Plan incompleto o mal estructurado</td>
+                        </tr>
+                        <tr>
+                            <td>Casos de prueba</td>
+                            <td>Casos completos y bien diseñados</td>
+                            <td>Buenos casos de prueba</td>
+                            <td>Casos básicos pero útiles</td>
+                            <td>Casos insuficientes o mal diseñados</td>
+                        </tr>
+                        <tr>
+                            <td>Ejecución y documentación</td>
+                            <td>Ejecución sistemática y documentación completa</td>
+                            <td>Buena ejecución y documentación</td>
+                            <td>Ejecución básica con documentación</td>
+                            <td>Ejecución deficiente o mal documentada</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module development">
+            <h2><span class="module-icon">19</span>Panel de Administración Backend</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>¿Qué es un panel de administración?</li>
+                    <li>Dashboard con métricas y estadísticas</li>
+                    <li>Gestión de contenido dinámico</li>
+                    <li>Editor WYSIWYG para contenido</li>
+                    <li>Gestión de usuarios y roles</li>
+                    <li>Configuración del sitio</li>
+                    <li>Logs y auditoría</li>
+                    <li>Backup y restauración</li>
+                    <li>Interfaz intuitiva y responsive</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://adminlte.io/">AdminLTE</a> - Template para admin panels</li>
+                    <li><a href="https://ckeditor.com/">CKEditor</a> - Editor WYSIWYG</li>
+                    <li><a href="https://www.chartjs.org/">Chart.js</a> - Gráficos para dashboard</li>
+                    <li><a href="https://datatables.net/">DataTables</a> - Tablas avanzadas</li>
+                    <li><a href="https://www.youtube.com/watch?v=MtfE1n6GWmE">Panel Admin PHP - YouTube</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Dashboard principal:</strong> Crear dashboard con estadísticas del sitio</li>
+                    <li><strong>Gestión de usuarios:</strong> CRUD completo de usuarios con roles</li>
+                    <li><strong>Gestión de contenido:</strong> Editor para páginas estáticas del sitio</li>
+                    <li><strong>Gestión de noticias:</strong> Sistema completo de noticias con imágenes</li>
+                    <li><strong>Configuración:</strong> Panel para configurar aspectos del sitio</li>
+                    <li><strong>Logs de actividad:</strong> Sistema de auditoría de acciones</li>
+                    <li><strong>Backup automático:</strong> Sistema de respaldo de datos</li>
+                    <li><strong>Reportes:</strong> Generación de reportes en PDF</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>📊 Funcionalidades del Panel Admin:</strong>
+                <ul>
+                    <li><strong>Dashboard:</strong> Resumen de actividad, usuarios activos, contenido reciente</li>
+                    <li><strong>Usuarios:</strong> Gestión completa con asignación de roles</li>
+                    <li><strong>Contenido:</strong> Editor para todas las páginas del sitio</li>
+                    <li><strong>Noticias:</strong> Publicación, edición y programación</li>
+                    <li><strong>Archivos:</strong> Gestor de archivos y multimedia</li>
+                    <li><strong>Configuración:</strong> Ajustes generales del sitio</li>
+                    <li><strong>Reportes:</strong> Estadísticas y reportes personalizados</li>
+                </ul>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Panel de Administración</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Funcionalidad</td>
+                            <td>Panel completo con todas las funcionalidades</td>
+                            <td>Panel funcional con características principales</td>
+                            <td>Panel básico pero operativo</td>
+                            <td>Panel incompleto o con errores</td>
+                        </tr>
+                        <tr>
+                            <td>Usabilidad</td>
+                            <td>Interfaz intuitiva y fácil de usar</td>
+                            <td>Buena experiencia de usuario</td>
+                            <td>Usabilidad básica adecuada</td>
+                            <td>Interfaz confusa o difícil de usar</td>
+                        </tr>
+                        <tr>
+                            <td>Integración</td>
+                            <td>Perfecta integración con el frontend</td>
+                            <td>Buena integración y sincronización</td>
+                            <td>Integración básica funcional</td>
+                            <td>Problemas de integración</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTE IV: GESTIÓN Y ENTREGA -->
+
+        <div class="module management">
+            <h2><span class="module-icon">20</span>Documentación Técnica Completa</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>Tipos de documentación técnica</li>
+                    <li>Documentación de análisis previo</li>
+                    <li>Documentación durante el desarrollo</li>
+                    <li>Documentación final del proyecto</li>
+                    <li>Manual técnico vs manual de usuario</li>
+                    <li>Diagramas y especificaciones</li>
+                    <li>Bitácoras y carpetas de campo</li>
+                    <li>Documentación de APIs</li>
+                    <li>README y documentación de código</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.writethedocs.org/">Write the Docs</a> - Comunidad de documentación</li>
+                    <li><a href="https://www.markdownguide.org/">Markdown Guide</a></li>
+                    <li><a href="https://docs.github.com/es/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes">GitHub - About READMEs</a></li>
+                    <li><a href="https://swagger.io/">Swagger</a> - Documentación de APIs</li>
+                    <li><a href="https://www.atlassian.com/es/software/confluence">Confluence</a> - Herramienta de documentación</li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Documento de análisis:</strong> Compilar todo el análisis previo realizado</li>
+                    <li><strong>Especificaciones técnicas:</strong> Documentar arquitectura y decisiones técnicas</li>
+                    <li><strong>Manual de instalación:</strong> Guía paso a paso para instalar el sistema</li>
+                    <li><strong>Manual de usuario:</strong> Guía completa para usuarios finales</li>
+                    <li><strong>Manual técnico:</strong> Documentación para desarrolladores</li>
+                    <li><strong>Bitácora del proyecto:</strong> Registro de actividades y decisiones</li>
+                    <li><strong>README del proyecto:</strong> Documentación principal del repositorio</li>
+                    <li><strong>Documentación de APIs:</strong> Si aplica, documentar endpoints</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>📋 Estructura de Documentación Sugerida:</strong>
+                <ol>
+                    <li><strong>Análisis Previo</strong>
+                        <ul>
+                            <li>Relevamiento de datos</li>
+                            <li>Análisis de requisitos</li>
+                            <li>Casos de uso</li>
+                            <li>Diagramas UML</li>
+                        </ul>
+                    </li>
+                    <li><strong>Diseño del Sistema</strong>
+                        <ul>
+                            <li>Arquitectura del sistema</li>
+                            <li>Diseño de base de datos</li>
+                            <li>Prototipado y mockups</li>
+                            <li>Planificación del proyecto</li>
+                        </ul>
+                    </li>
+                    <li><strong>Implementación</strong>
+                        <ul>
+                            <li>Decisiones técnicas</li>
+                            <li>Estructura del código</li>
+                            <li>Configuración del entorno</li>
+                            <li>Testing y QA</li>
+                        </ul>
+                    </li>
+                    <li><strong>Manuales de Usuario</strong>
+                        <ul>
+                            <li>Manual de instalación</li>
+                            <li>Manual de usuario final</li>
+                            <li>Manual de administrador</li>
+                            <li>FAQ y troubleshooting</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="evaluation">
+                <h3>📊 Evaluación</h3>
+                <div class="rubric">
+                    <h4>Rúbrica - Documentación Técnica</h4>
+                    <table class="rubric-table">
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Excelente (4)</th>
+                            <th>Bueno (3)</th>
+                            <th>Regular (2)</th>
+                            <th>Insuficiente (1)</th>
+                        </tr>
+                        <tr>
+                            <td>Completitud</td>
+                            <td>Documentación completa y exhaustiva</td>
+                            <td>Documentación adecuada y bien estructurada</td>
+                            <td>Documentación básica pero suficiente</td>
+                            <td>Documentación incompleta</td>
+                        </tr>
+                        <tr>
+                            <td>Claridad</td>
+                            <td>Documentación clara y fácil de seguir</td>
+                            <td>Buena claridad y organización</td>
+                            <td>Claridad básica adecuada</td>
+                            <td>Documentación confusa o mal organizada</td>
+                        </tr>
+                        <tr>
+                            <td>Utilidad</td>
+                            <td>Documentación muy útil para usuarios y desarrolladores</td>
+                            <td>Documentación útil y práctica</td>
+                            <td>Utilidad básica pero funcional</td>
+                            <td>Documentación poco útil</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="module management">
+            <h2><span class="module-icon">21</span>Presupuesto, Viabilidad y FODA</h2>
+            
+            <div class="concepts">
+                <h3>🎯 Conceptos Clave</h3>
+                <ul>
+                    <li>Análisis de viabilidad técnica, económica y operativa</li>
+                    <li>Estimación de costos de desarrollo</li>
+                    <li>Costos de infraestructura y mantenimiento</li>
+                    <li>ROI (Return on Investment)</li>
+                    <li>Análisis FODA (Fortalezas, Oportunidades, Debilidades, Amenazas)</li>
+                    <li>Análisis de riesgos</li>
+                    <li>Plan de contingencia</li>
+                    <li>Propuesta económica</li>
+                </ul>
+            </div>
+            
+            <div class="resources">
+                <h3>📚 Recursos para Aprender</h3>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=NKEhdsnKKHs">Análisis de Viabilidad - YouTube</a></li>
+                    <li><a href="https://blog.hubspot.es/marketing/que-es-analisis-foda">¿Qué es el Análisis FODA? - HubSpot</a></li>
+                    <li><a href="https://www.atlassian.com/es/work-management/project-management/project-budget">Presupuesto de Proyectos - Atlassian</a></li>
+                    <li><a href="https://asana.com/es/resources/swot-analysis">Análisis SWOT/FODA - Asana</a></li>
+                    <li><a href="https://www.projectmanager.com/es/roi-calculator">Calculadora ROI</a></li>
+                </ul>
+            </div>
+            
+            <div class="practice">
+                <h3>💪 Ejercicios Prácticos</h3>
+                <ol>
+                    <li><strong>Análisis de viabilidad:</strong> Evaluar viabilidad técnica, económica y operativa</li>
+                    <li><strong>Estimación de costos:</strong> Calcular costos de desarrollo, infraestructura y mantenimiento</li>
+                    <li><strong>Análisis FODA:</strong> Identificar fortalezas, oportunidades, debilidades y amenazas</li>
+                    <li><strong>Análisis de riesgos:</strong> Identificar riesgos potenciales y planes de mitigación</li>
+                    <li><strong>Propuesta económica:</strong> Crear propuesta formal con presupuesto detallado</li>
+                    <li><strong>ROI proyectado:</strong> Calcular retorno de inversión esperado</li>
+                    <li><strong>Plan de contingencia:</strong> Definir acciones ante posibles problemas</li>
+                </ol>
+            </div>
+            
+            <div class="highlight">
+                <strong>💰 Componentes del Presupuesto:</strong>
+                <ul>
+                    <li><strong>Desarrollo:</strong> Horas de programación, diseño, testing</li>
+                    <li><strong>Infraestructura:</strong> Hosting, dominio, SSL, base de datos</li>
+                    <li><strong>Herramientas:</strong> Licencias de software, servicios cloud</li>
+                    <li><strong>Mantenimiento:</strong> Actualizaciones, soporte, backup</li>
+                    <li><strong>Capacitación:</strong> Entrenamiento de usuarios</li>
+             </ul>
+          </div>
+        </div>
+
+</body>
+</html> 
